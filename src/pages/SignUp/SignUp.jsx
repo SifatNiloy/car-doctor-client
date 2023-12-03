@@ -1,8 +1,8 @@
 import React from "react";
 import login from "../../../src/assets/images/login/login.svg";
 import { Link } from "react-router-dom";
-const Login = () => {
-  const handleLogin = (event) => {
+const SignUp = () => {
+  const handleSignUp = (event) => {
     event.preventDefault();
   };
   return (
@@ -12,14 +12,27 @@ const Login = () => {
           <img src={login} alt="" />
         </div>
         <div className="card shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
-          <form onSubmit={handleLogin} className="card-body">
-            <h1 className="text-3xl font-bold text-center">Login </h1>
+          <form onSubmit={handleSignUp} className="card-body">
+            <h1 className="text-3xl font-bold text-center">Sign Up </h1>
+            <div className="form-control">
+              <label className="label">
+                <span className="label-text">Name</span>
+              </label>
+              <input
+                type="text"
+                name="name"
+                placeholder="Name"
+                className="input input-bordered"
+                required
+              />
+            </div>
             <div className="form-control">
               <label className="label">
                 <span className="label-text">Email</span>
               </label>
               <input
                 type="email"
+                name="email"
                 placeholder="email"
                 className="input input-bordered"
                 required
@@ -27,11 +40,12 @@ const Login = () => {
             </div>
             <div className="form-control">
               <label className="label">
-                <span className="label-text">Password</span>
+                <span className="label-text">Confirm Password</span>
               </label>
               <input
                 type="password"
-                placeholder="password"
+                name="password"
+                placeholder="Your Password"
                 className="input input-bordered"
                 required
               />
@@ -42,13 +56,17 @@ const Login = () => {
               </label>
             </div>
             <div className="form-control mt-6">
-              <input className="btn btn-primary " type="submit" value="Login" />
+              <input
+                className="btn btn-primary "
+                type="submit"
+                value="Sign Up"
+              />
             </div>
           </form>
           <p className="text-center my-4">
-            New to Car Doctors?{" "}
-            <Link className="text-orange-600 font-bold" to="/signup">
-              Sign Up
+            Alreday have an account?
+            <Link className="text-orange-600 font-bold" to="/login">
+              Login
             </Link>{" "}
           </p>
         </div>
@@ -57,4 +75,4 @@ const Login = () => {
   );
 };
 
-export default Login;
+export default SignUp;
