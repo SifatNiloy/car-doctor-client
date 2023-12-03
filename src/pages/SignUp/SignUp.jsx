@@ -1,9 +1,23 @@
-import React from "react";
+import React, { useContext } from "react";
 import login from "../../../src/assets/images/login/login.svg";
 import { Link } from "react-router-dom";
+import { AuthContext } from "../../AuthProvider/AuthProvider";
 const SignUp = () => {
+  const { createUser } = useContext(AuthContext);
   const handleSignUp = (event) => {
     event.preventDefault();
+    const form = event.target;
+    const name = form.name.value;
+    const email = form.email.value;
+    const password = form.password.value;
+    console.log(name, email, password);
+
+    createUser(email, password)
+      .then((result) => {
+        const user = result.user;
+        console.log(user);
+      })
+      .then((error) => console.log(error));
   };
   return (
     <div className="hero min-h-screen bg-base-200">
