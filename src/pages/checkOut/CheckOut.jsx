@@ -1,10 +1,10 @@
 import React, { useContext } from "react";
-import { useLoaderData } from "react-router-dom";
+import { json, useLoaderData } from "react-router-dom";
 import { AuthContext } from "../../AuthProvider/AuthProvider";
 
 const CheckOut = () => {
   const service = useLoaderData();
-  const { title, _id, price } = service;
+  const { title, _id, price, img } = service;
   const { user } = useContext(AuthContext);
 
   const handleBookService = (event) => {
@@ -13,14 +13,30 @@ const CheckOut = () => {
     const name = form.name.value;
     const date = form.date.value;
     const email = user?.email;
-    const order = {
+    const booking = {
       customerName: name,
       email,
       date,
-      service,
+      img,
+      service: title,
+      service_id: _id,
       price,
     };
-    console.log(order);
+    console.log(booking);
+    fetch("http://localhost:5000/bookings", {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(booking),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+        if (data.insertedId) {
+          alert("service book successfully");
+        }
+      });
   };
   return (
     <div>

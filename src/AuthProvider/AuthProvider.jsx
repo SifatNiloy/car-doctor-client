@@ -32,12 +32,17 @@ const AuthProvider = ({ children }) => {
   const signIn = () => {
     return signInWithEmailAndPassword(auth, email, password);
   };
+  const signOut = () => {
+    setLoading(true);
+    return signOut(auth);
+  };
 
   const authInfo = {
     user,
     loading,
     createUser,
     signIn,
+    signOut,
   };
   return (
     <AuthContext.Provider value={authInfo}>{children}</AuthContext.Provider>
