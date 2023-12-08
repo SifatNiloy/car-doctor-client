@@ -18,6 +18,13 @@ const Navbar = () => {
       <li>
         <Link to="/about">About</Link>
       </li>
+      {user?.email ? (
+        <li>
+          <Link to="/bookings">Bookings</Link>
+        </li>
+      ) : (
+        <></>
+      )}
     </>
   );
   return (

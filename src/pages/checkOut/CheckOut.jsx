@@ -48,7 +48,8 @@ const CheckOut = () => {
               <span className="label-text">Name</span>
             </label>
             <input
-              type="name"
+              type="text"
+              name="name"
               placeholder="Name"
               className="input input-bordered"
               defaultValue={user?.displayName}
