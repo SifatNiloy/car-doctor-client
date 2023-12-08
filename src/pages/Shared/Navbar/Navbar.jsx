@@ -3,12 +3,13 @@ import { Link } from "react-router-dom";
 import logo from "../../../assets/logo.svg";
 import { AuthContext } from "../../../AuthProvider/AuthProvider";
 const Navbar = () => {
-  const { user, signOut } = useContext(AuthContext);
-  handleSignOut = () => {
-    signOut()
+  const { user, logOut } = useContext(AuthContext);
+  const handleLogOut = () => {
+    logOut()
       .then(() => {})
       .catch((error) => console.log(error));
   };
+  console.log(handleLogOut);
   const navItems = (
     <>
       <li>
@@ -54,10 +55,13 @@ const Navbar = () => {
         <ul className="menu menu-horizontal px-1">{navItems}</ul>
       </div>
       <div className="navbar-end">
-        {user.email ? (
-          <li>
-            <button onClick={handleSignOut}>Logout</button>
-          </li>
+        {user?.email ? (
+          <button
+            onClick={handleLogOut}
+            className="btn btn-outline btn-warning"
+          >
+            Logout
+          </button>
         ) : (
           <Link to="/login" className="btn btn-outline btn-warning">
             Login
