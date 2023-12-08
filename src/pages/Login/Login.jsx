@@ -7,7 +7,7 @@ const Login = () => {
   const handleLogin = (event) => {
     event.preventDefault();
     const form = event.target;
-    const name = form.name.value;
+    // const name = form.name.value;
     const email = form.email.value;
     const password = form.password.value;
     console.log(name, email, password);
@@ -33,6 +33,7 @@ const Login = () => {
               </label>
               <input
                 type="email"
+                name="email"
                 placeholder="email"
                 className="input input-bordered"
                 required
@@ -44,6 +45,7 @@ const Login = () => {
               </label>
               <input
                 type="password"
+                name="password"
                 placeholder="password"
                 className="input input-bordered"
                 required
