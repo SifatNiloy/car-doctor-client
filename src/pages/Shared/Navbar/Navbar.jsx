@@ -9,7 +9,7 @@ const Navbar = () => {
       .then(() => {})
       .catch((error) => console.log(error));
   };
-  console.log(handleLogOut);
+  // console.log(handleLogOut);
   const navItems = (
     <>
       <li>
