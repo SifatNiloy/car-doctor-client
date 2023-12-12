@@ -2,6 +2,16 @@ import React from "react";
 
 const BookingRow = ({ booking }) => {
   const { _id, customerName, email, price, service, date, img } = booking;
+
+  const handleDelete = () => {
+    const proceed = confirm("Are you sure you want to delete?");
+    if (proceed) {
+      fetch(``)
+        .then((res) => res.json())
+        .then((data) => console.log(data));
+    }
+  };
+
   return (
     <tr>
       <th>
@@ -24,7 +34,9 @@ const BookingRow = ({ booking }) => {
       <td>{price}</td>
       <td>{date}</td>
       <th>
-        <button className="btn btn-ghost btn-xs">details</button>
+        <button onClick={handleDelete} className="btn btn-ghost btn-xs">
+          delete
+        </button>
       </th>
     </tr>
   );
